@@ -15,7 +15,7 @@ function App() {
     //состояние корзины
     const [overlayOpen, setOverlayOpen] = React.useState(false)
     //хранение данных туров
-    const [tyrs, setTyrs] = React.useState([])
+    const [tours, setTours] = React.useState([])
     //для хранения объектов корзины
     const [overlayItems, setOverlayItems] = React.useState([])
     //Для поиска 
@@ -27,11 +27,11 @@ function App() {
 
         async function axiosData(){
             
-            const tyrsData = await axios.get('https://637f91d12f8f56e28e904fc0.mockapi.io/tyrs')
+            const toursData = await axios.get('https://637f91d12f8f56e28e904fc0.mockapi.io/tours')
             const cartData = await axios.get('https://637f91d12f8f56e28e904fc0.mockapi.io/cart')
             const favoritesData = await axios.get('https://637f91d12f8f56e28e904fc0.mockapi.io/favorites')
     
-              setTyrs(tyrsData.data)
+              setTours(toursData.data)
               setOverlayItems(cartData.data)
               setFavorites(favoritesData.data)
               
@@ -60,8 +60,8 @@ function App() {
         <AppContext.Provider
             value={
                 {
-                tyrs,
-                setTyrs,
+                tours,
+                setTours,
                 overlayItems,
                 setOverlayItems,
                 favorites,
@@ -98,7 +98,7 @@ function App() {
                         <Favorites
                         favorites ={favorites}
                         setFavorites={setFavorites}
-                        item={tyrs}
+                        item={tours}
                         overlayItems={overlayItems}
                         setOverlayItems={setOverlayItems}
                         />
@@ -108,7 +108,7 @@ function App() {
                 <Route path='/'
                     element={
                         <Home
-                            item={tyrs}
+                            item={tours}
                             overlayItems={overlayItems}
                             setOverlayItems={setOverlayItems}
                             setSearch={setSearch}
